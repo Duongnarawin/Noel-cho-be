@@ -322,7 +322,7 @@
             lCtx.font = 'bold 120px "Segoe UI", sans-serif';
             lCtx.fillStyle = '#FF69B4'; lCtx.textAlign = 'center';
             lCtx.shadowColor = "#FF1493"; lCtx.shadowBlur = 40; 
-            lCtx.fillText("I LOVE YOU ❤️", 512, 130);
+            lCtx.fillText("IU BE ❤️", 512, 130);
             const loveTex = new THREE.CanvasTexture(loveCanvas);
             const loveMat = new THREE.MeshBasicMaterial({ map: loveTex, transparent: true, blending: THREE.AdditiveBlending });
             loveMesh = new THREE.Mesh(new THREE.PlaneGeometry(70, 18), loveMat);
@@ -527,6 +527,20 @@
         window.addEventListener('resize', () => {
             if(camera) { camera.aspect = window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); }
         });
+        // ===== ĐIỀU KHIỂN BẰNG CHUỘT (THAY CAMERA) =====
+        // // Click chuột trái → Explode
+        window.addEventListener("click", () => {
+            window.detectedGesture = "open";
+        });
+        // Click chuột phải → Love
+        window.addEventListener("contextmenu", (e) => {
+            e.preventDefault();
+        window.detectedGesture = "heart";
+    });
+    // Double click → Tree
+    window.addEventListener("dblclick", () => {
+    window.detectedGesture = "fist";
+    });
     </script>
 </body>
 </html>
